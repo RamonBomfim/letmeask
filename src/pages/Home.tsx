@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import ilustrationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
 import googleImg from '../assets/images/google-icon.svg';
+import loginImg from '../assets/images/login.svg';
 
 import { database } from '../services/firebase';
 
@@ -33,6 +34,9 @@ export function Home() {
         }
 
         const roomRef = await database.ref(`rooms/${roomCode}`).get();
+
+        // const isAdmin = await database.ref(`rooms/${roomCode}/authorid`).get();
+        // console.log(isAdmin);
 
         if (!roomRef.exists()) {
             alert('Room does not exist');
@@ -70,7 +74,7 @@ export function Home() {
                             value={roomCode}
                         />
                         <Button type="submit">
-                            Entrar na sala
+                            <img src={loginImg} alt="Entrar na sala" /> Entrar na sala
                         </Button>
                     </form>
                 </div>
